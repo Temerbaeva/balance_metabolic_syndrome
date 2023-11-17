@@ -10,8 +10,7 @@ def process_main_page():
 
 
 def show_main_page():
-    image = Image.open('data/metabolic-img.jpe'
-                       'g')
+    image = Image.open('data/metabolic-img.jpeg')
 
     st.set_page_config(
         layout="wide",
