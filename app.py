@@ -70,14 +70,14 @@ def sidebar_input_features():
     bmi = st.sidebar.slider("Индекс массы тела", min_value=10, max_value=70, value=0,
                             step=1)
 
-    albuminuria = st.sidebar.slider("Уровень альбуминурии",
-                               min_value=0, max_value=5, value=0, step=1)
+    #albuminuria = st.sidebar.slider("Уровень альбуминурии",
+                               #min_value=0, max_value=5, value=0, step=1)
 
-    uralbcr = st.sidebar.slider("Соотношение альбуминурии и креатина в моче",
-                                    min_value=0, max_value=6000, value=0, step=1)
+    #uralbcr = st.sidebar.slider("Соотношение альбуминурии и креатина в моче",
+                                   # min_value=0, max_value=6000, value=0, step=1)
 
-    uricacid = st.sidebar.slider("Уровень мочевой кислоты в крови",
-                                min_value=0, max_value=12, value=0, step=1)
+    #uricacid = st.sidebar.slider("Уровень мочевой кислоты в крови",
+                               # min_value=0, max_value=12, value=0, step=1)
 
     bloodglucose = st.sidebar.slider("Уровень глюкозы в крови",
                                  min_value=30, max_value=400, value=0, step=1)
@@ -97,9 +97,9 @@ def sidebar_input_features():
         "Age": age,
         "WaistCirc": waistcirc,
         "BMI": bmi,
-        "Albuminuria": albuminuria,
-        "UrAlbCr": uralbcr,
-        "UricAcid": uricacid,
+        #"Albuminuria": albuminuria,
+        #"UrAlbCr": uralbcr,
+        #"UricAcid": uricacid,
         "BloodGlucose": bloodglucose,
         "HDL": hdl,
         "Triglycerides": triglycerides
