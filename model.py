@@ -11,15 +11,14 @@ import streamlit as st
 
 def split_data(df: pd.DataFrame):
     y = df['MetabolicSyndrome']
-    X = df[["Age", "WaistCirc", "BMI", "Albuminuria", "UrAlbCr", "UricAcid",
-            "BloodGlucose", "HDL", "Triglycerides"]]
+    X = df[["Age", "WaistCirc", "BMI", "BloodGlucose", "HDL", "Triglycerides"]]
 
     return X, y
 
 
 def open_data(path="data/data.csv"):
     df = pd.read_csv(path)
-    df = df[['MetabolicSyndrome', "Age", "WaistCirc", "BMI", "Albuminuria", "UrAlbCr", "UricAcid",
+    df = df[['MetabolicSyndrome', "Age", "WaistCirc", "BMI", 
             "BloodGlucose", "HDL", "Triglycerides"]]
 
     return df
