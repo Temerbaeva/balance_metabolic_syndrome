@@ -1,7 +1,7 @@
-import pandas as pd
-import streamlit as st
+import pandas as pd     ### импортируем библиотеки
+import streamlit as st   
 from PIL import Image
-from model import open_data, preprocess_data, split_data, load_model_and_predict
+from model import open_data, preprocess_data, split_data, load_model_and_predict   ###обученная модель
 
 
 def process_main_page():
@@ -9,8 +9,8 @@ def process_main_page():
     process_side_bar_inputs()
 
 
-def show_main_page():
-    image = Image.open('data/metabolic-img.jpeg')
+def show_main_page():                                ###интерфейс
+    image = Image.open('data/metabolic-img.jpeg')    ###загрузка датасета
 
     st.set_page_config(
         layout="wide",
@@ -29,12 +29,12 @@ def show_main_page():
     st.image(image)
 
 
-def write_user_data(df):
+def write_user_data(df):            ###передадим как аргумент данные пациента
     st.write("## Данные пациента")
     st.write(df)
 
 
-def write_prediction(prediction, prediction_probas):
+def write_prediction(prediction, prediction_probas):    ###функция передачи аргументов прогноза
     st.write("## Предсказание")
     st.write(prediction)
 
@@ -42,25 +42,25 @@ def write_prediction(prediction, prediction_probas):
     st.write(prediction_probas)
 
 
-def process_side_bar_inputs():
-    st.sidebar.header('Заданные параметры пациента')
-    user_input_df = sidebar_input_features()
+def process_side_bar_inputs():             ###оформляем ввод данных и их обработку
+    st.sidebar.header('Заданные параметры пациента')    ###заголовок боковой панели
+    user_input_df = sidebar_input_features()            ###передадим в переменную признаки пользователя
 
-    train_df = open_data()
-    train_X_df, _ = split_data(train_df)
-    full_X_df = pd.concat((user_input_df, train_X_df), axis=0)
+    train_df = open_data()                              ###передадим датасет в переменную
+    train_X_df, _ = split_data(train_df)                ###выделим признаки
+    full_X_df = pd.concat((user_input_df, train_X_df), axis=0)    ###добавим к признакам данные пользователя
     preprocessed_X_df = preprocess_data(full_X_df, test=False)
 
     user_X_df = preprocessed_X_df[:1]
-    write_user_data(user_X_df)
+    write_user_data(user_X_df)               ###выведем как аргументы данные пользователя
 
-    prediction, prediction_probas = load_model_and_predict(user_X_df)
-    write_prediction(prediction, prediction_probas)
+    prediction, prediction_probas = load_model_and_predict(user_X_df)   ###в сохраненную обученную модель передаем данные пользователя
+    write_prediction(prediction, prediction_probas)   
 
 
-def sidebar_input_features():
+def sidebar_input_features():      ###ввод признаков пользователя в боковой панели
     
-    age = st.sidebar.slider("Возраст", min_value=1, max_value=90, value=0,
+    age = st.sidebar.slider("Возраст", min_value=1, max_value=90, value=0,   ###ввод данных слайдером
                             step=1)
 
     waistcirc = st.sidebar.slider(
@@ -88,10 +88,10 @@ def sidebar_input_features():
         "Triglycerides": triglycerides
     }
 
-    df = pd.DataFrame(data, index=[0])
+    df = pd.DataFrame(data, index=[0])       ###Введенные пользователем данныесохраним в датасет
 
     return df
 
 
-if __name__ == "__main__":
+if __name__ == "__main__":          ###определим точку входа
     process_main_page()
