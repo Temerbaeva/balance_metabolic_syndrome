@@ -59,47 +59,30 @@ def process_side_bar_inputs():
 
 
 def sidebar_input_features():
-    #sex = st.sidebar.selectbox("Пол", ("Мужской", "Женский"))
+    
     age = st.sidebar.slider("Возраст", min_value=1, max_value=90, value=0,
                             step=1)
 
     waistcirc = st.sidebar.slider(
-        "Окружность талии",
+        "Окружность талии (см)",
         min_value=40, max_value=180, value=0, step=1)
 
     bmi = st.sidebar.slider("Индекс массы тела", min_value=10, max_value=70, value=0,
                             step=1)
 
-    albuminuria = st.sidebar.slider("Уровень альбуминурии",
-                               min_value=0, max_value=5, value=0, step=1)
-
-    uralbcr = st.sidebar.slider("Соотношение альбуминурии и креатина в моче",
-                                    min_value=0, max_value=6000, value=0, step=1)
-
-    uricacid = st.sidebar.slider("Уровень мочевой кислоты в крови",
-                                min_value=0, max_value=12, value=0, step=1)
-
-    bloodglucose = st.sidebar.slider("Уровень глюкозы в крови",
+    bloodglucose = st.sidebar.slider("Уровень глюкозы в крови (мг/дл)",
                                  min_value=30, max_value=400, value=0, step=1)
 
-    hdl = st.sidebar.slider("Уровень холестерина липопротеинов высокой плотности",
+    hdl = st.sidebar.slider("Уровень холестерина липопротеинов высокой плотности (мг/дл)",
                                      min_value=10, max_value=160, value=0, step=1)
 
-    triglycerides = st.sidebar.slider("Уровень триглицерида",
+    triglycerides = st.sidebar.slider("Уровень триглицерида (мг/дл)",
                             min_value=20, max_value=1600, value=0, step=1)
 
-    #translatetion = {
-       # "Мужской": "Male",
-       # "Женский": "Female"}
-
     data = {
-        #"Sex": translatetion[sex],
         "Age": age,
         "WaistCirc": waistcirc,
         "BMI": bmi,
-        "Albuminuria": albuminuria,
-        "UrAlbCr": uralbcr,
-        "UricAcid": uricacid,
         "BloodGlucose": bloodglucose,
         "HDL": hdl,
         "Triglycerides": triglycerides
