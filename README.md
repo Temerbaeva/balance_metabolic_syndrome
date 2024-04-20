@@ -26,5 +26,5 @@ streamlit run app.py
 ```
 Откройте http://localhost:8501, чтобы просмотреть приложение.
 
-[ S_1 = S \left( \frac{h_1}{h} \right)^2 ]
+S_1 = S \left( \frac{h_1}{h} \right)^2
 
